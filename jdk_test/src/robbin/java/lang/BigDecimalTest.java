@@ -57,11 +57,26 @@ public class BigDecimalTest {
 	 * 1/32 = 0.03125
 	 * 1/64 = 0.015625
 	 * 0.1(十进制) = 0.0001100110011001(二进制)
+	 * 
+	 * 十进制的0.1，写成二进制是0.1,相当于1 × 2^-1
+	 * 十进制的5.0，写成二进制是101.0，相当于1.01×2^2。那么，按照上面V的格式，可以得出s=0，M(尾数)=1.01，E(指数位)=2。
 	 */
 	@Test
 	public void test_03(){
-		float a = 0.1f;
+		float a = 0.1f; //
+		float b = 5.0f;
 		System.out.println(Integer.toBinaryString(Float.floatToIntBits(a)));
+		System.out.println(Integer.toBinaryString(Float.floatToIntBits(b)));
 		// 00111101 11001100 11001100 11001101
+		// 01000000 10100000 00000000 00000000
+		
+		// 1bit（符号位）  0
+		// 8bits（指数位） 001111011
+		// 23bits（尾数位） 1001100 11001100 11001101    
+		
+		double d = 5.0; // 101.0 ==>> 1.01×2^2  
+		System.out.println(Long.toBinaryString(Double.doubleToLongBits(d)));
+		//01000000 00010100 00000000 00000000 00000000 00000000 00000000 00000000
+		
 	}
 }
