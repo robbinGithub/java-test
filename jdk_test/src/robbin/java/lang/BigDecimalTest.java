@@ -78,5 +78,57 @@ public class BigDecimalTest {
 		System.out.println(Long.toBinaryString(Double.doubleToLongBits(d)));
 		//01000000 00010100 00000000 00000000 00000000 00000000 00000000 00000000
 		
+		
+		// 12.5
+		// 整数部分12，二进制为1100; 小数部分0.5, 二进制是.1，先把他们连起来，从第一个1数起取24位（后面补0）：1100.10000000000000000000
+		System.out.println("====================Double.doubleToLongBits(12.5))=================================");
+		System.out.println(Long.toBinaryString(Double.doubleToLongBits(12.5)));
+		// 100000000101001000000000000000000000000000000000000000000000000
+		
+		
+		/**
+		 * 分析107.1597824f
+		 * 进制转换工具地址：http://tool.oschina.net/hexconvert/
+		 */
+		System.out.println("====================Float.floatToIntBits(107.1597824f)=================================");
+		System.out.println(Integer.toBinaryString(Float.floatToIntBits(107.1597824f)));
+		
+		// 1101011.0010100011100111011111111101011001111001111101
+		
+		// 1101011.00101000111001111
+		// 符号位：0
+		// 指数位为： 127 + 6 = 133 即十进制133 10000101
+		// 尾数位为：10101100101000111001111
+		// 01000010 11010110 01010001 11001111
+		
+		
+		float f1 = 423.1594f;
+        float f2 = -423.1594f;
+        int floatToIntBits1 = Float.floatToIntBits(f1);// 根据IEEE754规则，得到浮点的表示值。
+        int floatToIntBits2 = Float.floatToIntBits(f2);
+ 
+        System.out.println("正float===" + Integer.toBinaryString(floatToIntBits1));// 转二进制
+        System.out.println("负float===" + Integer.toBinaryString(floatToIntBits2));
+        System.out.println("正float===" + Integer.toHexString(floatToIntBits1));// 转十六进制
+        System.out.println("负float===" + Integer.toHexString(floatToIntBits2));
+        
+		
+		double d1 = 423453.1597824345;
+        double d2 = -423453.1597824345;
+        long doubleToLongBits1 = Double.doubleToLongBits(d1);// 根据IEEE754规则，得到浮点的表示值。
+        long doubleToLongBits2 = Double.doubleToLongBits(d2);
+ 
+        System.out.println("正double===" + Long.toBinaryString(doubleToLongBits1));// 转二进制
+        System.out.println("负double===" + Long.toBinaryString(doubleToLongBits2));
+        System.out.println("正double===" + Long.toHexString(doubleToLongBits1));// 转十六进制
+        System.out.println("负double===" + Long.toHexString(doubleToLongBits2));
+        
+  /*    正double===100000100011001110110000111010010100011100111100000000110101011
+		负double===1100000100011001110110000111010010100011100111100000000110101011
+		正double===4119d874a39e01ab
+		负double===c119d874a39e01ab
+		
+		*/
+		
 	}
 }
