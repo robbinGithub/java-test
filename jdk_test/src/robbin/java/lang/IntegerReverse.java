@@ -1,4 +1,4 @@
-package robbin.java;
+package robbin.java.lang;
 
 class IntegerReverse{
 	
